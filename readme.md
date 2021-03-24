@@ -1,7 +1,8 @@
-# Java Primitives and Control Flow
+# Java fundamentals
 
-This lab is dedicated to practicing Java fundamentals. These problems will challenge your understanding of Java’s built-in primitive values (ints, floats, doubles, Strings, booleans), for loops, while loops, if statements, functions, parameters and return statements.
+this collection will include the labs for Java fundamentals.
 
-well, this repo only has:
+please see the following list:
 
-a basic function folder, with a Main.java sitting in it, doing very simple things.
+1. [Lab-01: Java Primitives and Control Flow](./docs/lab01.md);
+2. [Lab-02: Arrays, Loops, Imports, ArrayLists](./docs/lab02.md);
