@@ -27,7 +27,7 @@ public class Main {
   // Function that accepts a word and a number and returns a string with the word pluralized with an “s” if the number is zero, or greater than one.
 
   public static String pluralize ( String str, int qty) {
-    return qty > 1 ? str + "s" : str;
+    return qty > 1 || qty==0 ? str + "s" : str;
   }
 
   // Function that that accepts an integer n and flips coins until n heads are flipped in a row.
