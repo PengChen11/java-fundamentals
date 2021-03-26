@@ -5,15 +5,13 @@ package basiclibrary;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.OptionalDouble;
 
 import static org.junit.Assert.*;
 
 public class LibraryTest {
-    @Test public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
-    }
 
     @Test public void testRollResultLength(){
         int expectedNum = 7;
@@ -59,5 +57,44 @@ public class LibraryTest {
         int[] expected = {55, 54, 60, 53, 59, 57, 61};
         int[] testResult = Library.getLowestAvgArr(weeklyMonthTemperatures);
         assertArrayEquals("would find the array of lowest average", expected,testResult);
+    }
+
+    @Test public void testAnalyzeWeatherData (){
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        String result = Library.analyzeWeatherData(weeklyMonthTemperatures);
+        String newLine = System.getProperty("line.separator");
+        String expected = "High: 72"
+                        + newLine
+                        +"Low: 51"
+                        + newLine
+                        +"Never saw temperature: 63"
+                        + newLine
+                        +"Never saw temperature: 67"
+                        + newLine
+                        +"Never saw temperature: 68"
+                        + newLine
+                        +"Never saw temperature: 69";
+        assertEquals("String should be the same", expected, result);
+    }
+
+    @Test public void testTally (){
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+        String result = Library.tally(votes);
+        String expected = "Bush";
+        assertEquals("result should be Bush", expected, result);
     }
 }

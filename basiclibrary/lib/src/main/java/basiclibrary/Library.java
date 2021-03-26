@@ -6,10 +6,21 @@ import java.lang.Math;
 import java.util.*;
 
 public class Library {
-    public boolean someLibraryMethod() {
-        return true;
-    }
+    public static void main(String[] args){
+        List<String> votes = new ArrayList<String>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
 
+        String winner = tally(votes);
+        System.out.println(winner + " received the most votes!");
+    }
     public static int[] roll (int n) {
         int[] result = new int[n];
         for (int i = 0; i < n; i++){
@@ -54,6 +65,53 @@ public class Library {
         }
 
         return result;
+    }
+
+    public static String analyzeWeatherData (int[][] data) {
+        Integer low = null;
+        Integer high = null;
+        HashSet<Integer> tempSet= new HashSet<>();
+
+
+        for (int[] week : data){
+            for (int day : week){
+                if (low == null || day < low) low = day;
+                if (high == null || day > high) high = day;
+                tempSet.add(day);
+            }
+        }
+
+        String newLine = System.getProperty("line.separator");
+        String result = "High: " + high
+                + newLine
+                + "Low: " + low;
+        for (int i = low+1; i<high; i++){
+            if ( !tempSet.contains(i)){
+                result = result.concat(newLine+ "Never saw temperature: " + i);
+            }
+        }
+        System.out.println(result);
+        return result;
+    }
+
+    public static String tally ( List list ){
+        String maxVote = null;
+        int highestVote =0;
+        HashMap<String, Integer> voteMap = new HashMap<>();
+
+        Iterator<String> iterator = list.iterator();
+        while(iterator.hasNext()) {
+            String item = iterator.next();
+            if (!voteMap.containsKey(item)) {
+                voteMap.put(item, 1);
+                if (highestVote < 1) maxVote = item;
+            } else {
+                Integer count = voteMap.get(item);
+                voteMap.put(item, count + 1);
+                if ( highestVote < count + 1) maxVote = item;
+            }
+        }
+        return maxVote;
     }
 
     private static int rollOnce(){
