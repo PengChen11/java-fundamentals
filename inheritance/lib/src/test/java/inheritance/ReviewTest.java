@@ -19,4 +19,31 @@ public class ReviewTest {
         String actual = test.toString();
         assertEquals("Review should output proper string", expected, actual);
     }
+
+    @Test public void testReviewKnowsItsKind() throws Exception {
+        Review testRestaurant = new Review("body", "test author", 5);
+        testRestaurant.restaurant = "aaa restaurant";
+        String expected = "This review is for aaa restaurant restaurant, from author: test author, with 5 stars. Review content: body.";
+        String actual = testRestaurant.toString();
+        assertEquals("Review should output proper string", expected, actual);
+
+        Review testShop = new Review("body", "test author", 5);
+        testShop.shop = "bbb shop";
+        String expectedShop = "This review is for bbb shop shop,from author: test author, with 5 stars. Review content: body.";
+        assertEquals("Review should output proper string", expectedShop, testShop.toString());
+
+        Review testTheater = new Review("body", "test author", 5);
+        testTheater.theater = "ccc theater";
+        String expectedTheater = "This review is for ccc theater theater,from author: test author, with 5 stars. " +
+                "Review" +
+                " content: body.";
+        assertEquals("Review should output proper string", expectedTheater, testTheater.toString());
+
+        Review testMovie = new Review("body", "test author", 5);
+        testMovie.movie = "some name";
+        String expectedMovie = "This review is for some name movie,from author: test author, with 5 stars. " +
+                "Review" +
+                " content: body.";
+        assertEquals("Review should output proper string", expectedMovie, testMovie.toString());
+    }
 }

@@ -6,6 +6,9 @@ public class Review {
     String author;
     Integer stars;
     String restaurant;
+    String theater;
+    String movie;
+    String shop;
 
     public Review (String body, String author, Integer stars) throws Exception{
         if (body == null || author == null || stars == null){
@@ -21,14 +24,31 @@ public class Review {
 
     @Override
     public String toString(){
-        if (restaurant == null) {
+        if (this.restaurant != null) {
             return String.format(
-                    "Author: %s, Stars: %d, review: %s",
-                    this.author, this.stars, this.body
+                    "This review is for %s restaurant, from author: %s, with %d stars. Review content: %s.",
+                    this.restaurant, this.author, this.stars, this.body);
+        }
+
+        if (this.shop != null) {
+            return String.format(
+                    "This review is for %s shop,from author: %s, with %d stars. Review content: %s.",
+                    this.shop, this.author, this.stars, this.body
             );
         }
+
+        if (this.theater != null) {
+            return String.format(
+                    "This review is for %s theater,from author: %s, with %d stars. Review content: %s.",
+                    this.theater, this.author, this.stars, this.body
+            );
+        }
+
+
+
         return String.format(
-                "Restaurant: %s, Author: %s, Stars: %d, review: %s",
-                this.restaurant, this.author, this.stars, this.body);
+                "Author: %s, Stars: %d, review: %s.",
+                this.author, this.stars, this.body
+            );
     }
 }
